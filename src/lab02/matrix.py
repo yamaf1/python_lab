@@ -47,22 +47,22 @@ def col_sums(mat: list[list[float | int]]) -> list[float]:
         res.append(s)
     return res
 
-print(transpose([[1, 2, 3]]))       
-print(transpose([[1], [2], [3]]))   
-print(transpose([[1, 2], [3, 4]]))  
-print(transpose([]))                
-try:
-    print(transpose([[1, 2], [3]]))
-except ValueError as e:
-    print("ValueError:", e)
+# print(transpose([[1, 2, 3]]))       
+# print(transpose([[1], [2], [3]]))   
+# print(transpose([[1, 2], [3, 4]]))  
+# print(transpose([]))                
+# try:
+#     print(transpose([[1, 2], [3]]))
+# except ValueError as e:
+#     print("ValueError:", e)
 
-print(row_sums([[1, 2, 3], [4, 5, 6]]))   
-print(row_sums([[-1, 1], [10, -10]]))     
-print(row_sums([[0, 0], [0, 0]]))        
-try:
-    print(row_sums([[1, 2], [3]]))
-except ValueError as e:
-    print("ValueError:", e)
+# print(row_sums([[1, 2, 3], [4, 5, 6]]))   
+# print(row_sums([[-1, 1], [10, -10]]))     
+# print(row_sums([[0, 0], [0, 0]]))        
+# try:
+#     print(row_sums([[1, 2], [3]]))
+# except ValueError as e:
+#     print("ValueError:", e)
 
 print(col_sums([[1, 2, 3], [4, 5, 6]]))   
 print(col_sums([[-1, 1], [10, -10]]))     
