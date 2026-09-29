@@ -1,4 +1,5 @@
 def transpose(mat: list[list[float | int]]) -> list[list]:
+    """Транспонирует матрицу: строки в столбцы"""
     if not mat:
         return []
     cols = len(mat[0])
@@ -15,7 +16,7 @@ def transpose(mat: list[list[float | int]]) -> list[list]:
 
 
 def row_sums(mat: list[list[float | int]]) -> list[float]:
-
+    """Возвращает сумму по каждой строке матрицы"""
     if not mat:
         return []
     cols = len(mat[0])
@@ -30,7 +31,7 @@ def row_sums(mat: list[list[float | int]]) -> list[float]:
 
 
 def col_sums(mat: list[list[float | int]]) -> list[float]:
-
+    """Возвращает сумму по каждой строке матрицы"""
     if not mat:
         return []
     cols = len(mat[0])

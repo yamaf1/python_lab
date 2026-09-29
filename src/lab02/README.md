@@ -3,13 +3,23 @@
 # Лабораторная работа 2
 ## Задание 1
 
+## `min_max`
+
 ![min_max](../../images/lab02/image1.1.png)
 
 Программа возвращает кортеж из минимума и максимума списка.
 
+---
+
+## `unique_sorted`
+
 ![unique_sorted](../../images/lab02/image1.2.png)
 
 Программа выводит новый список из уникальных значений исходного, отсортированный по возрастанию.
+
+---
+
+## `flatten`
 
 ![flatten](../../images/lab02/image1.3.png)
 
@@ -17,19 +27,31 @@
 
 ## Задание 2
 
+## `transpose`
+
 ![transpose](../../images/lab02/image2.1.png)
 
 Функция меняет строки и столбцы местами.
 
+---
+
+## `row_sums`
+
 ![row_sums](../../images/lab02/image2.2.png)
 
 Функция выводит сумму по каждой строке.
+
+---
+
+## `col_sums`
 
 ![col_sums](../../images/lab02/image2.3.png)
 
 Функция выводит сумму по каждому столбцу.
 
 ## Задание 3
+
+## `format_record`
 
 ![tuples](../../images/lab02/image3.png)
 

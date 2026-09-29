@@ -1,4 +1,5 @@
 def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
+    """Возвращает минимум и максимум списка"""
     if not nums:
         raise ValueError("Список пуст")
     low = nums[0]
@@ -12,6 +13,7 @@ def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
 
 
 def unique_sorted(nums: list[float | int]) -> list[float | int]:
+    """Возвращает уникальные значения по возрастанию"""
     uniq = []
     for item in nums:
         if item not in uniq:
@@ -24,6 +26,7 @@ def unique_sorted(nums: list[float | int]) -> list[float | int]:
 
 
 def flatten(mat: list[list | tuple]) -> list:
+    """Разворачивает матрицу в один список"""
     flat = []
     for chunk in mat:
         if not isinstance(chunk, (list, tuple)):
