@@ -6,7 +6,10 @@ def format_record(rec: tuple[str, str, float]) -> str:
         raise ValueError("Группа не может быть пустой")
     if not isinstance(gpa, (int, float)):
         raise TypeError("GPA должен быть числом")
-
+    if gpa < 0 or gpa > 5:
+        raise ValueError("GPA должен быть от 0 до 5")
+    if len(fio.split()) != 2 and len(fio.split()) != 3:
+        raise ValueError("Неверное ФИО")
     parts = fio.split()
     surname = parts[0].capitalize()
     initials = ""
