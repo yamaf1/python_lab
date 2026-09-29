@@ -8,10 +8,10 @@ def transpose(mat: list[list[float | int]]) -> list[list]:
             raise ValueError("Рваная матрица")
     res = []
     for j in range(cols):
-        new_row = []
+        nrow = []
         for i in range(len(mat)):
-            new_row.append(mat[i][j])
-        res.append(new_row)
+            nrow.append(mat[i][j])
+        res.append(nrow)
     return res
 
 
@@ -26,7 +26,11 @@ def row_sums(mat: list[list[float | int]]) -> list[float]:
         
     res = []
     for row in mat:
-        res.append(sum(row))
+        sm = 0
+        for i in row:
+            sm += i
+
+        res.append(sm)
     return res
 
 
@@ -41,28 +45,28 @@ def col_sums(mat: list[list[float | int]]) -> list[float]:
         
     res = []
     for j in range(cols):
-        s = 0
+        sm = 0
         for i in range(len(mat)):
-            s += mat[i][j]
-        res.append(s)
+            sm += mat[i][j]
+        res.append(sm)
     return res
 
-# print(transpose([[1, 2, 3]]))       
-# print(transpose([[1], [2], [3]]))   
-# print(transpose([[1, 2], [3, 4]]))  
-# print(transpose([]))                
-# try:
-#     print(transpose([[1, 2], [3]]))
-# except ValueError as e:
-#     print("ValueError:", e)
+print(transpose([[1, 2, 3]]))       
+print(transpose([[1], [2], [3]]))   
+print(transpose([[1, 2], [3, 4]]))  
+print(transpose([]))                
+try:
+    print(transpose([[1, 2], [3]]))
+except ValueError as e:
+    print("ValueError:", e)
 
-# print(row_sums([[1, 2, 3], [4, 5, 6]]))   
-# print(row_sums([[-1, 1], [10, -10]]))     
-# print(row_sums([[0, 0], [0, 0]]))        
-# try:
-#     print(row_sums([[1, 2], [3]]))
-# except ValueError as e:
-#     print("ValueError:", e)
+print(row_sums([[1, 2, 3], [4, 5, 6]]))   
+print(row_sums([[-1, 1], [10, -10]]))     
+print(row_sums([[0, 0], [0, 0]]))        
+try:
+    print(row_sums([[1, 2], [3]]))
+except ValueError as e:
+    print("ValueError:", e)
 
 print(col_sums([[1, 2, 3], [4, 5, 6]]))   
 print(col_sums([[-1, 1], [10, -10]]))     
