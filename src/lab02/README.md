@@ -52,6 +52,36 @@
 ## Задание 3
 
 ## `format_record`
+```python
+def format_record(rec: tuple[str, str, float]) -> str:
+    if type(rec) != tuple:
+        raise TypeError("Запись должна быть кортежем")
+    if len(rec) != 3:
+        raise ValueError("В записи должно быть 3 элемента")
+    fio, group, gpa = rec
+    if type(fio) != str or type(group) != str:
+        raise TypeError("ФИО и группа должны быть строками")
+    if type(gpa) != int and type(gpa) != float:
+        raise TypeError("GPA должен быть числом")
+    if not fio.strip():
+        raise ValueError("ФИО не может быть пустым")
+    if not group.strip():
+        raise ValueError("Группа не может быть пустой")
+    if not (0 <= gpa <= 5):
+        raise ValueError("GPA должен быть от 0 до 5")
+    if len(fio.split()) != 2 and len(fio.split()) != 3:
+        raise ValueError("Неверное ФИО")
+    parts = fio.split()
+    for p in parts:
+        if not p.replace("-", "").isalpha():
+            raise ValueError("ФИО должно состоять только из букв")
+    surname = parts[0].capitalize()
+    group = group.strip()
+    initials = ""
+    for p in parts[1:]:
+        initials += p[0].upper() + "."
+    return f"\"{surname} {initials}, гр. {group}, GPA {gpa:.2f}\""
+```
 
 ![tuples](../../images/lab02/image3.png)
 
