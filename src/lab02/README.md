@@ -5,7 +5,21 @@
 
 ## `min_max`
 
-![min_max](../../images/lab02/image1.1.png)
+```python
+def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
+    """Возвращает минимум и максимум списка"""
+    if not nums:
+        raise ValueError("Список пуст")
+    mn = nums[0]
+    mx = nums[0]
+    for item in nums:
+        if item < mn:
+            mn = item
+        if item > mx:
+            mx = item
+    return (mn, mx)
+```
+![Программа возвращает кортеж из минимума и максимума списка](../../images/lab02/image1.1.png)
 
 Программа возвращает кортеж из минимума и максимума списка.
 
@@ -13,23 +27,62 @@
 
 ## `unique_sorted`
 
-![unique_sorted](../../images/lab02/image1.2.png)
-
+```python
+def unique_sorted(nums: list[float | int]) -> list[float | int]:
+    """Возвращает уникальные значения по возрастанию"""
+    lst = []
+    for item in nums:
+        if item not in lst:
+            lst.append(item)
+    for i in range(len(lst)):
+        for j in range(len(lst) - 1 - i):
+            if lst[j] > lst[j + 1]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+    return lst
+```
+![Программа выводит новый список из уникальных значений исходного, отсортированный по возрастанию.](../../images/lab02/image1.2.png)
 Программа выводит новый список из уникальных значений исходного, отсортированный по возрастанию.
 
 ---
 
 ## `flatten`
 
-![flatten](../../images/lab02/image1.3.png)
-
+```python
+def flatten(mat: list[list | tuple]) -> list:
+    """Разворачивает матрицу в один список"""
+    lst = []
+    for row in mat:
+        if not isinstance(row, (list, tuple)):
+            raise TypeError("Элемент не является строкой матрицы")
+        for i in row:
+            lst.append(i)
+    return lst
+```
+![Программа превращает список кортежей в один плоский список по строкам.](../../images/lab02/image1.3.png)
 Программа превращает список кортежей в один плоский список по строкам.
 
 ## Задание 2
 
 ## `transpose`
 
-![transpose](../../images/lab02/image2.1.png)
+```python
+def transpose(mat: list[list[float | int]]) -> list[list]:
+    """Транспонирует матрицу: строки в столбцы"""
+    if not mat:
+        return []
+    cols = len(mat[0])
+    for row in mat:
+        if len(row) != cols:
+            raise ValueError("Рваная матрица")
+    res = []
+    for j in range(cols):
+        nrow = []
+        for i in range(len(mat)):
+            nrow.append(mat[i][j])
+        res.append(nrow)
+    return res
+```
+![Функция меняет строки и столбцы местами.](../../images/lab02/image2.1.png)
 
 Функция меняет строки и столбцы местами.
 
@@ -37,7 +90,26 @@
 
 ## `row_sums`
 
-![row_sums](../../images/lab02/image2.2.png)
+```python
+def row_sums(mat: list[list[float | int]]) -> list[float]:
+    """Возвращает сумму по каждой строке матрицы"""
+    if not mat:
+        return []
+    cols = len(mat[0])
+    for row in mat:
+        if len(row) != cols:
+            raise ValueError("Рваная матрица")
+        
+    res = []
+    for row in mat:
+        sm = 0
+        for i in row:
+            sm += i
+
+        res.append(sm)
+    return res
+```
+![Функция выводит сумму по каждой строке.](../../images/lab02/image2.2.png)
 
 Функция выводит сумму по каждой строке.
 
@@ -45,7 +117,25 @@
 
 ## `col_sums`
 
-![col_sums](../../images/lab02/image2.3.png)
+```python
+def col_sums(mat: list[list[float | int]]) -> list[float]:
+    """Возвращает сумму по каждой строке матрицы"""
+    if not mat:
+        return []
+    cols = len(mat[0])
+    for row in mat:
+        if len(row) != cols:
+            raise ValueError("Рваная матрица")
+        
+    res = []
+    for j in range(cols):
+        sm = 0
+        for i in range(len(mat)):
+            sm += mat[i][j]
+        res.append(sm)
+    return res
+```
+![Функция выводит сумму по каждому столбцу.](../../images/lab02/image2.3.png)
 
 Функция выводит сумму по каждому столбцу.
 
