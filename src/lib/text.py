@@ -31,3 +31,28 @@ def count_freq(tokens: list[str]) -> dict[str, int]:
 def top_n(freq: dict[str, int], n: int = 5) -> list[tuple[str, int]]:
     """Возвращает N самых частых слов, отсортированных по частоте (убывание) и алфавиту."""
     return sorted(freq.items(), key=lambda x: (-x[1], x[0]))[:n]
+
+
+print("--- Тесты normalize ---")
+print(f'"ПрИвЕт\\nМИр\\t" -> "{normalize("ПрИвЕт\nМИр\t")}"')
+print(f'"ёжик, Ёлка" -> "{normalize("ёжик, Ёлка")}"')
+print(f'"Hello\\r\\nWorld" -> "{normalize("Hello\r\nWorld")}"')
+print(f'"  двойные   пробелы  " -> "{normalize("  двойные   пробелы  ")}"')
+
+print("\n--- Тесты tokenize ---")
+print(f'"привет мир" -> {tokenize("привет мир")}')
+print(f'"hello,world!!!" -> {tokenize("hello,world!!!")}')
+print(f'"по-настоящему круто" -> {tokenize("по-настоящему круто")}')
+print(f'"2025 год" -> {tokenize("2025 год")}')
+print(f'"emoji 😀 не слово" -> {tokenize("emoji 😀 не слово")}')
+
+print("\n--- Тесты count_freq и top_n ---")
+tokens1 = ["a", "b", "a", "c", "b", "a"]
+freq1 = count_freq(tokens1)
+print(f"Токены {tokens1} -> частоты {freq1}")
+print(f"top_n(..., n=2) -> {top_n(freq1, n=2)}")
+
+tokens2 = ["bb", "aa", "bb", "aa", "cc"]
+freq2 = count_freq(tokens2)
+print(f"Тай-брейк {tokens2} -> частоты {freq2}")
+print(f"top_n(..., n=2) -> {top_n(freq2, n=2)}")

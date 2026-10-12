@@ -10,6 +10,7 @@ from lib.text import count_freq, normalize, tokenize, top_n
 
 
 def main():
+    sys.stdin.reconfigure(encoding='utf-8')
     text = sys.stdin.read()
     if not text:
         return
