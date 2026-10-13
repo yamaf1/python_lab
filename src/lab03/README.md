@@ -17,6 +17,8 @@ def normalize(text: str, *, casefold: bool = True, yo2e: bool = True) -> str:
     text = re.sub(r"\s+", " ", text)
     return text.strip()
 ```
+Функция приводит строку к нужному регистру, заменяет «ё» на «е» и удаляет лишние пробелы.
+
 ![функция 1](../../images/lab03/image1.1.png)
 
 ## `tokenize`
@@ -25,6 +27,9 @@ def tokenize(text: str) -> list[str]:
     """Функция считывает из текста слова, включая слова с дефисом и числа."""
     return re.findall(r"\w+(?:-\w+)*", text)
 ```
+
+Функция разбивает строку на список отдельных слов с учётом слов с дефисом и чисел.
+
 ![функция 2](../../images/lab03/image1.2.png)
 
 ## `count_freq и top_n`
@@ -32,10 +37,18 @@ def tokenize(text: str) -> list[str]:
 def count_freq(tokens: list[str]) -> dict[str, int]:
     """Функция возвращает словарь с количеством каждого слова."""
     freq: dict[str, int] = {}
-    for token in tokens:
-        freq[token] = freq.get(token, 0) + 1
+    for w in tokens:
+        freq[w] = freq.get(w, 0) + 1
     return freq
+
+def top_n(freq: dict[str, int], n: int = 5) -> list[tuple[str, int]]:
+    """Функция возвращает n самых частых слов."""
+    return sorted(freq.items(), key=lambda x: (-x[1], x[0]))[:n]
 ```
+
+Функция count_freq считает частоту вхождения каждого слова из списка и возвращает словарь.
+
+Функция top_n возвращает список из 5 самых частых слов, отсортированных по убыванию частоты и алфавиту.
 ![функция 3 4](../../images/lab03/image1.3.png)
 
 ## Задание В
@@ -71,4 +84,6 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+Обрабатывает текст с помощью функций библиотеки lib.text и выводит в консоль статистику: общее число слов, количество уникальных слов и топ-5 самых частых слов.
 ![функция 5](../../images/lab03/image2.png)
