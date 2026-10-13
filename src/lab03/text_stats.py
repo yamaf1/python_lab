@@ -1,7 +1,6 @@
 import os
 import sys
 
-# Добавляем корневую директорию src в sys.path для импорта модуля lib
 sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 )
