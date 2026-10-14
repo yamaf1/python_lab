@@ -1,49 +1,40 @@
 import sys
 from pathlib import Path
+import argparse
 
-# Добавляем путь к src, чтобы Python видел lib и lab04
 current_dir = Path(__file__).resolve().parent
 src_dir = current_dir.parent
 if str(src_dir) not in sys.path:
     sys.path.append(str(src_dir))
-
-# Импортируем готовые функции из твоей библиотеки (ЛР3) и модуля ввода-вывода
 from lib.text import normalize, tokenize, count_freq, top_n
-from lab04.io_txt_csv import write_csv
+from lab04.io_txt_csv import read_text, write_csv
 
+def sorted_word_counts(freq: dict[str, int]) -> list[tuple[str, int]]:
+    """Сортировка пар (word, count)"""
+    return sorted(freq.items(), key = lambda kv: (-kv[1], kv[0]))
 
 def main():
-    input_path = Path("data/lab04/input.txt")
-    output_path = Path("data/lab04/report.csv")
-
-    # 1. Чтение файла с защитой: используем with и ловим FileNotFoundError (из лекции)
-    try:
-        with open(input_path, encoding="utf-8") as f:
-            text = f.read()
-    except FileNotFoundError:
-        print(f"ошибка: файл не найден: {input_path}", file=sys.stderr)
-        sys.exit(1)
-
-    # 2. Конвейер обработки текста с использованием твоих функций из ЛР3
-    norm_text = normalize(text)
-    tokens = tokenize(norm_text)
+    parser = argparse.ArgumentParser(description="Генерация частотного отчёта")
+    parser.add_argument("--in", default="data/lab04/input.txt", dest="input_file")
+    parser.add_argument("--out", default="data/lab04/report.csv", dest="output_file")
+    parser.add_argument("--encoding", default="utf-8") # <-- сюда передастся cp1251
+    
+    args = parser.parse_args()
+    input_path = Path(args.input_file)
+    output_path = Path(args.output_file)
+    text = read_text(input_path, encoding=args.encoding)
+   
+    tokens = tokenize(normalize(text))
     freq = count_freq(tokens)
+    sorted_rows = sorted_word_counts(freq)
 
-    # 3. Сортировка для CSV-отчёта: берём всю базу frequency.items() 
-    # и сортируем по правилу ТЗ (сначала частота ↓, затем слово ↑), 
-    # аналогично тому, как это сделано внутри твоего top_n
-    sorted_rows = sorted(freq.items(), key=lambda x: (-x[1], x[0]))
-
-    # 4. Запись отчёта в CSV
     header = ("word", "count")
     write_csv(sorted_rows, output_path, header=header)
 
-    # 5. Вывод краткой сводки в консоль (с использованием твоей функции top_n)
     print(f"Всего слов: {len(tokens)}")
     print(f"Уникальных слов: {len(freq)}")
-    print(f"Топ-5 слов: {top_n(freq, 5)}")
-    print(f"Отчёт успешно сохранен в {output_path}")
-
-
+    print("Топ-5:")
+    for word, count in top_n(freq, 5):
+        print(f"{word}:{count}")
 if __name__ == "__main__":
     main()
