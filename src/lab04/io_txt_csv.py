@@ -8,18 +8,21 @@ def ensure_parent_dir(path: str | Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
 def read_text(path: str | Path, encoding: str = "utf-8") -> str:
-    """
-    Открывает файл на чтение в указанной кодировке и возвращает содержимое как одну строку.
-    """
+    """ Открывает файл и читает в заданной кодировке """
     p = Path(path)
-    return p.read_text(encoding=encoding)
+    return Path(path).read_text(encoding=encoding)
 
 def write_csv(
         rows: Iterable[Sequence],
         path: str | Path,
         header: tuple[str, ...] | None = None
 ) -> None:
-    """Создаёт или перезаписывает CSV-файл с разделителем ','."""
+    """Создаёт или перезаписывает CSV-файл"""
+    if rows:
+        etalon = len(rows[0])
+        for r in rows:
+            if len(r) != etalon:
+                raise ValueError('Строки разной длинны')
     p = Path(path)
     ensure_parent_dir(p)
     rows = list(rows)
