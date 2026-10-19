@@ -7,11 +7,22 @@
 #### `read_text`
 ```python
 def read_text(path: str | Path, encoding: str = "utf-8") -> str:
-    """ Открывает файл и читает в заданной кодировке """
+    """Открывает файл и читает в заданной кодировке.
+
+    По умолчанию кодировка UTF-8. Для другой кодировки укажите encoding,
+    например: read_text("data/lab04/input.txt", encoding="cp1251").
+
+    Raises:
+        FileNotFoundError: если файл не найден.
+        UnicodeDecodeError: если файл нельзя прочитать в этой кодировке.
+    """
     p = Path(path)
     return p.read_text(encoding=encoding)
 ```
+
+Функция читает файл и возвращает его как одну строку. Для этой лабораторной работы такой подход допустим, но в реальных проектах большие файлы лучше читать построчно, чтобы не занимать много оперативной памяти.
 Если файл не найден, возникает FileNotFoundError. При несовпадении кодировки возникает UnicodeDecodeError.
+
 
 ---
 
@@ -137,3 +148,14 @@ cat data/lab04/header_only.csv
 py -c "from src.lab04.io_txt_csv import write_csv; write_csv([(1,2),(3,)], 'data/lab04/bad.csv')"
 ```
 ![cr4](../../images/lab04/image4cr.png)
+
+### Тест C. Нестандартная кодировка
+
+```powershell
+py -c "open('data/lab04/input_cp1251.txt', 'w', encoding='cp1251').write('Привет')"
+```
+
+```powershell
+py src/lab04/text_report.py --in data/lab04/input_cp1251.txt --out data/lab04/report_cp1251.csv --encoding cp1251
+```
+![3](../../images/lab04/image5.png)

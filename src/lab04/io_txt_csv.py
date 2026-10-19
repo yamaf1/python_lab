@@ -18,14 +18,14 @@ def write_csv(
         header: tuple[str, ...] | None = None
 ) -> None:
     """Создаёт или перезаписывает CSV-файл"""
+    p = Path(path)
+    ensure_parent_dir(p)
+    rows = list(rows)
     if rows:
         etalon = len(rows[0])
         for r in rows:
             if len(r) != etalon:
                 raise ValueError('Строки разной длинны')
-    p = Path(path)
-    ensure_parent_dir(p)
-    rows = list(rows)
     with p.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         if header is not None:
