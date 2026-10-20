@@ -85,7 +85,7 @@ def main():
     parser = argparse.ArgumentParser(description="Генерация частотного отчёта")
     parser.add_argument("--in", default="data/lab04/input.txt", dest="input_file")
     parser.add_argument("--out", default="data/lab04/report.csv", dest="output_file")
-    parser.add_argument("--encoding", default="utf-8") # <-- сюда передастся cp1251
+    parser.add_argument("--encoding", default="utf-8")
     
     args = parser.parse_args()
     input_path = Path(args.input_file)
