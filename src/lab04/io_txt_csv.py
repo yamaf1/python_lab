@@ -8,7 +8,15 @@ def ensure_parent_dir(path: str | Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
 def read_text(path: str | Path, encoding: str = "utf-8") -> str:
-    """ Открывает файл и читает в заданной кодировке """
+    """ Открывает файл и читает в заданной кодировке.
+
+    По умолчанию кодировка UTF-8. Для другой кодировки укажите encoding,
+    например: read_text("data/lab04/input.txt", encoding="cp1251").
+
+    Raises:
+        FileNotFoundError: если файл не найден.
+        UnicodeDecodeError: если файл нельзя прочитать в этой кодировке.
+    """
     p = Path(path)
     return Path(path).read_text(encoding=encoding)
 
@@ -26,6 +34,7 @@ def write_csv(
         for r in rows:
             if len(r) != etalon:
                 raise ValueError('Строки разной длинны')
+
     with p.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         if header is not None:
