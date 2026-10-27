@@ -67,8 +67,5 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
         json.dump(data, p, ensure_ascii=False, indent=2)
 
 if __name__ == '__main__':
-    # Вызываем функцию конвертации JSON -> CSV
     json_to_csv('data/samples/people.json', 'data/out/people_from_json.csv')
-    
-    # Вызываем функцию конвертации CSV -> JSON
     csv_to_json('data/samples/people.csv', 'data/out/people_from_csv.json')
