@@ -1,6 +1,6 @@
-# Отчет по лабораторной работе 5
+# Отчет по лабораторной работе №5
 
-## Задание A — JSON ↔ CSV
+## Задание A. JSON ↔ CSV
 
 ### Функция `json_to_csv`
 
@@ -94,7 +94,7 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
 
 Сохраняет JSON с параметрами ensure_ascii=False (для корректного отображения кириллицы) и indent=2.
 
-## Задание B — CSV → XLSX
+## Задание B. CSV → XLSX
 
 Конвертирует данные из формата CSV в документ XLSX.
 
