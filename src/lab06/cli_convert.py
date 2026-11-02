@@ -39,5 +39,5 @@ def main():
     except ValueError as error:
         parser.error(str(error))
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
