@@ -136,7 +136,7 @@ if __name__ == "__main__":
 
 ### Тесты:
 
-`Модуль cli_text.py`
+## `Модуль cli_text.py`
 
 Команда cat с нумерацией строк (-n):
 
@@ -169,15 +169,11 @@ py -m src.lab06.cli_text --help
 py -m src.lab06.cli_text cat --help
 py -m src.lab06.cli_text stats --help
 ```
+Общая справка:
 
-`Модуль cli_convert.py`
+![im11](../../images/lab06/image11.png)
 
-Вывод справки:
-
-```powershell
-py -m src.lab06.cli_convert --help
-py -m src.lab06.cli_convert json2csv --help
-```
+## `Модуль cli_convert.py`
 
 Конвертация JSON в CSV:
 
@@ -204,6 +200,13 @@ py -m src.lab06.cli_convert csv2xlsx --in data/samples/people.csv --out data/out
 ![im6](../../images/lab06/image6.png)
 
 Вывод справки:
+
+```powershell
+py -m src.lab06.cli_convert --help
+py -m src.lab06.cli_convert json2csv --help
+py -m src.lab06.cli_convert csv2json --help
+py -m src.lab06.cli_convert jcsv2xlsx --help
+```
 
 Общая справка по всем подкомандам:
 
