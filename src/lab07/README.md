@@ -150,13 +150,13 @@ def selection_sort(nums) -> list:
 ### Импортируемые функции и библиотеки
 
 * random - библиотека, чтобы генерировать случайные числа. Используется в создании рандомных списков и чисел для проверки.
-* src.lab_07.sorting (...) - функции сортировок.
-* src.lab_07.search (...) - функции поиска.
+* src.lab07.sorting (...) - функции сортировок.
+* src.lab07.search (...) - функции поиска.
 
 ``` py
 import random
-from src.lab_07.sorting import bubble_sort, insertion_sort, selection_sort
-from src.lab_07.search import (
+from src.lab07.sorting import bubble_sort, insertion_sort, selection_sort
+from src.lab07.search import (
     linear_search,
     binary_search,
     two_sum_brute,
@@ -273,8 +273,8 @@ if __name__ == "__main__":
 * write_csv - функция, чтобы оформить данные в csv файл.
 * timeit - библиотека, чтобы замерить время выполнения сортировок и поиска.
 * random - библиотека, чтобы генерировать случайные числа. Используется в создании рандомных списков и чисел для проверки.
-* src.lab_07.sorting (...) - функции сортировок.
-* src.lab_07.search (...) - функции поиска элемента.
+* src.lab07.sorting (...) - функции сортировок.
+* src.lab07.search (...) - функции поиска элемента.
 
 ``` py
 import csv
@@ -283,13 +283,13 @@ from src.lab_04.io_txt_csv import write_csv
 import timeit
 import random
 
-from src.lab_07.sorting import (
+from src.lab07.sorting import (
     bubble_sort,
     insertion_sort,
     selection_sort
 )
 
-from src.lab_07.search import (
+from src.lab07.search import (
     linear_search,
     binary_search,
     two_sum_brute,
